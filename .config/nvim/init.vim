@@ -8,8 +8,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 	Plug 'ap/vim-css-color'
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-	Plug 'honza/vim-snippets'
-
 	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 	Plug 'junegunn/fzf.vim'
 	Plug 'airblade/vim-rooter'
@@ -17,7 +15,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 	Plug 'fatih/vim-go'
 	Plug 'vimwiki/vimwiki'
 
-	Plug 'tmhedberg/SimpylFold'
 	Plug 'tpope/vim-commentary'  "gcc to  comment
 	Plug 'tpope/vim-surround'
 
@@ -134,17 +131,10 @@ let g:coc_snippet_prev = '<c-k>'
 imap <C-j> <Plug>(coc-snippets-expand-jump)
 
 "ALE
-
-" I'd love to nuke rust: rls eventually
-" but RA doesnt have real time linting
-" future -> coc.settings enable_diagnostics: true
 let g:ale_linters = {
 \   'python': ['flake8'],
 \   'javascript': ['eslint'],
 \}
-
-"this gives asynchronus but maybe i dont care ehh
-" \   'rust': ['cargo'],
 
 let g:ale_fixers = {
 \   'html': ['html-beautify'],

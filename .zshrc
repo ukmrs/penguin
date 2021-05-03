@@ -118,6 +118,7 @@ unset __conda_setup
 # else
 #   export EDITOR='mvim'
 # fi
+export EDITOR='nvim'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -132,11 +133,26 @@ unset __conda_setup
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias n="nvim"
 alias v="nvim"
+
+# common config tinkering
+alias ncfg="$EDITOR $HOME/.config/nvim/init.vim"
+alias acfg="$EDITOR $HOME/.config/alacritty/alacritty.yml"
+alias zcfg="$EDITOR $HOME/.zshrc"
+
+# rust stuff
+alias nr="$EDITOR src/main.rs"
+alias run="cargo run"
+
 alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 # git aliases
 alias addup='git add -u'
 alias addall='git add -A'
 alias commit='git commit -m'
+alias push='git push origin'
+
+# misc
+alias weather='curl wttr.in/poznan'
+
 
 
 
