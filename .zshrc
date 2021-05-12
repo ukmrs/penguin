@@ -142,6 +142,7 @@ alias zcfg="$EDITOR $HOME/.zshrc"
 # rust stuff
 alias nr="$EDITOR src/main.rs"
 alias run="cargo run"
+alias ct="cargo test"
 
 alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 # git aliases
@@ -152,6 +153,8 @@ alias push='git push origin'
 
 # misc
 alias weather='curl wttr.in/poznan'
+# bieżący projekt
+source $HOME/.config/.bp
 
 
 

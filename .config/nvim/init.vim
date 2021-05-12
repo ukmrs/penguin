@@ -3,6 +3,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 	Plug 'gruvbox-community/gruvbox'
 	Plug 'sainnhe/everforest'
+	Plug 'marko-cerovac/material.nvim'
 
 	Plug 'w0rp/ale'
 	Plug 'ap/vim-css-color'
@@ -41,6 +42,8 @@ set background=dark " use dark mode
 
 syntax on
 
+" colorscheme gruvbox
+" let g:material_style = 'palenight'
 colorscheme gruvbox
 
 " set termguicolors
@@ -183,6 +186,7 @@ imap kj <Esc>
 " imap <C-j> <Esc>
 " vmap <C-j> <Esc>
 
+vmap <leader>y "+y
 "save
 nnoremap <leader>s :w<CR>
 
@@ -213,9 +217,6 @@ nmap <silent> gd <Plug>(coc-definition)
 
 " Symbol renaming.
 nmap <leader>r <Plug>(coc-rename)
-
-"vim-run
-nnoremap <leader>n :Run<CR>
 
 " ALE - Asynchronous Lint Engine
 map <silent> <leader>o :ALEFix<CR>
