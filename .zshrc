@@ -139,6 +139,9 @@ alias ncfg="$EDITOR $HOME/.config/nvim/init.vim"
 alias acfg="$EDITOR $HOME/.config/alacritty/alacritty.yml"
 alias zcfg="$EDITOR $HOME/.zshrc"
 
+# python
+alias ca="conda activate"
+
 # rust stuff
 alias nr="$EDITOR src/main.rs"
 alias run="cargo run"

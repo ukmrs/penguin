@@ -2,19 +2,16 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 	Plug 'gruvbox-community/gruvbox'
-	Plug 'sainnhe/everforest'
-	Plug 'marko-cerovac/material.nvim'
+	Plug 'bluz71/vim-nightfly-guicolors'
 
-	Plug 'w0rp/ale'
 	Plug 'ap/vim-css-color'
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+	Plug 'honza/vim-snippets'
 
 	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 	Plug 'junegunn/fzf.vim'
 	Plug 'airblade/vim-rooter'
-
-	Plug 'fatih/vim-go'
-	Plug 'vimwiki/vimwiki'
 
 	Plug 'tpope/vim-commentary'  "gcc to  comment
 	Plug 'tpope/vim-surround'
@@ -25,9 +22,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 	Plug 'justinmk/vim-sneak'
 
 	Plug 'romainl/vim-cool'  "stop highlighting after search
-	Plug 'tpope/vim-fugitive'  "git integration
-		Plug 'https://github.com/shumphrey/fugitive-gitlab.vim'
-		Plug 'https://github.com/tpope/vim-rhubarb'
 
 	Plug 'itchyny/lightline.vim'
 	Plug 'https://github.com/cespare/vim-toml'
@@ -42,13 +36,11 @@ set background=dark " use dark mode
 
 syntax on
 
-" colorscheme gruvbox
-" let g:material_style = 'palenight'
-colorscheme gruvbox
+set termguicolors
+colorscheme nightfly
 
 " set termguicolors
 hi Normal guibg=NONE ctermbg=NONE
-
 " background like normal terminal
 set number relativenumber
 set autoindent
@@ -63,26 +55,19 @@ set sidescrolloff=3
 set scrolloff=3
 set tabstop=4
 set shiftwidth=4
-"
-" undecided => yeet the statusbar
-" set noshowmode
-" set noruler
-" set laststatus=0
-" set noshowcmd
-" set cmdheight=1
-" end of undecided
 
-" vimwiki bs start
-set nocompatible
-filetype plugin on
-let g:vimwiki_table_mappings = 0
-" vimwiki bs end
 " comment
 autocmd FileType kivy setlocal commentstring=#\ %s
 " local
 autocmd Filetype rust setlocal colorcolumn=100
 
 autocmd Filetype python setlocal colorcolumn=80
+autocmd FileType html setlocal shiftwidth=2 softtabstop=2 expandtab
+autocmd FileType css setlocal shiftwidth=2 softtabstop=2 expandtab
+autocmd FileType javascript setlocal shiftwidth=2 softtabstop=2 expandtab
+
+" usually the case
+au BufNewFile,BufRead *.html set filetype=htmldjango
 
 " 'wombat', 'solarized', 'darcula'
 let g:lightline = {
@@ -133,21 +118,10 @@ let g:coc_snippet_prev = '<c-k>'
 " Use <C-j> for both expand and jump (make expand higher priority.)
 imap <C-j> <Plug>(coc-snippets-expand-jump)
 
-"ALE
-let g:ale_linters = {
-\   'python': ['flake8'],
-\   'javascript': ['eslint'],
-\}
-
-let g:ale_fixers = {
-\   'html': ['html-beautify'],
-\   'htmldjango': ['html-beautify'],
-\   'css': ['prettier'],
-\   'javascript': ['prettier'],
-\   'python': ['yapf'],
-\   'rust': ['rustfmt'],
-\   'c': ['clang-format'],
-\}
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
@@ -164,8 +138,8 @@ require'nvim-treesitter.configs'.setup {
   ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   ignore_install = { "haskell" }, -- List of parsers to ignore installing
   highlight = {
-    enable = false,              -- false will disable the whole extension
-    disable = { "c" },  -- list of language that will be disabled
+    enable = true,              -- false will disable the whole extension
+    disable = { "python" },  -- list of language that will be disabled
   },
 }
 EOF
@@ -188,7 +162,7 @@ imap kj <Esc>
 
 vmap <leader>y "+y
 "save
-nnoremap <leader>s :w<CR>
+nnoremap <leader>w :w<CR>
 
 "window navigation
 nnoremap <silent> <leader>h :wincmd h<CR>
@@ -200,9 +174,6 @@ nnoremap <Leader>ps :Rg<SPACE>
 
 "terminal navigation
 tnoremap <Esc> <C-\><C-n>
-
-"Undotree
-nnoremap <leader>u :UndotreeShow<CR>
 
 " GoTo code navigation.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -218,8 +189,8 @@ nmap <silent> gd <Plug>(coc-definition)
 " Symbol renaming.
 nmap <leader>r <Plug>(coc-rename)
 
-" ALE - Asynchronous Lint Engine
-map <silent> <leader>o :ALEFix<CR>
+" formatting
+map <silent> <leader>o <Plug>(coc-format)
 
 " This is the default extra key bindings
 let g:fzf_action = {
