@@ -135,7 +135,7 @@ alias n="nvim"
 alias v="nvim"
 
 # common config tinkering
-alias ncfg="$EDITOR $HOME/.config/nvim/init.vim"
+alias ncfg="$EDITOR $HOME/.config/nvim/init.lua"
 alias acfg="$EDITOR $HOME/.config/alacritty/alacritty.yml"
 alias zcfg="$EDITOR $HOME/.zshrc"
 
@@ -156,6 +156,8 @@ alias push='git push origin'
 
 # misc
 alias weather='curl wttr.in/poznan'
+alias ktorobi="ktorobi | lolcat"
+
 # bieżący projekt
 source $HOME/.config/.bp
 
@@ -168,5 +170,3 @@ bindkey "\E[4~" end-of-line
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-export PATH="$HOME/.poetry/bin:$PATH"
