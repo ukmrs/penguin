@@ -89,8 +89,10 @@ return packer.startup(function(use)
   use "nvim-telescope/telescope.nvim"
 
   -- Sneak
-
   use "justinmk/vim-sneak"
+
+  -- surround
+  use "tpope/vim-surround"
 
   -- Treesitter
   use {

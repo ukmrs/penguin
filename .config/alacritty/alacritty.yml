@@ -1,5 +1,7 @@
+# part of tmux/vim/alacritty/fix
 env:
   TERM: xterm-256color
+# endof fix
 
 # Colors (Gruvbox dark)
 colors:
