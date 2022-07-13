@@ -52,6 +52,9 @@ keymap("v", ">", ">gv", opts)
 keymap("v", "<A-j>", ":m .+1<CR>==", opts)
 keymap("v", "<A-k>", ":m .-2<CR>==", opts)
 
+-- copy selection to plus
+keymap("v", "<C-y>", '"+y', opts)
+
 -- not really for me;
 -- keymap("v", "p", '"_dP', opts)
 

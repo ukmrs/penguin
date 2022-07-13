@@ -92,7 +92,14 @@ return packer.startup(function(use)
   use "justinmk/vim-sneak"
 
   -- surround
-  use "tpope/vim-surround"
+  use({
+    "kylechui/nvim-surround",
+    config = function()
+        require("nvim-surround").setup({
+            -- Configuration here, or leave empty to use defaults
+        })
+    end
+  })
 
   -- Treesitter
   use {
